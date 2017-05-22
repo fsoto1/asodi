@@ -4,18 +4,18 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Asodi</title>
+    <title>{% block title %}{{ settings.SETTING }}{% endblock %}</title>
     {% load staticfiles %}
-    <link href="{% static 'socios/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'socios/css/style.css' %}" rel="stylesheet" type="text/css" >
+    <link href="{% static 'sas/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'sas/css/style.css' %}" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<div>
 		<div class="container-fluid header">
 	      <div class="row">
 	          <div class="col-xs-12 ">
-				<h1>Asodi</h1>
-				<h2>Sistema de gestión de socios</h2>
+                <img src="{% static 'sas/img/logo-asodi.png' %}" alt="logo-asodi" class="img-responsive img-thumbnail">
+				        <h1>Sistema de Administación de Socios</h1>
 	          </div>
 	      </div>
 	    </div>
@@ -31,11 +31,11 @@
         </div> 
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active"><a href="{% url 'sas:index' %}"><span class="glyphicon glyphicon-home"></span></a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Socios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Ingresar Socio</a></li>
+                <li><a href="{% url 'sas:ingresar-socio' %}">Ingresar Socio</a></li>
                 <li><a href="#">Buscar Socio</a></li>
                 <li><a href="#">Buscar apoderado</a></li>
               </ul>
@@ -48,8 +48,17 @@
               </ul>
             </li>
             <li><a href="#">Reportes</a></li>
-            <li><a href="#">Cuotas</a></li>
-            <li><a href="#">Mantenedor</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuotas<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Ver</a></li>
+                <li><a href="#">Buscar</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Mantenedor</a></li>            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="left"><a href="{% url 'sas:logout' %}"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
           </ul>
         </div>
       </div>
@@ -64,13 +73,13 @@
 		<div class="container-fluid header footer">
 	      <div class="row">
 	          <div class="col-xs-12 ">
-				<p>Sistema de gestión de socios</p>
+				<p>Sistema de administración de socios</p>
 	          </div>
 	      </div>
 	    </div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'socios/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'sas/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
