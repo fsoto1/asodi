@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sas.apps.SasConfig',
+    'login.apps.LoginConfig',
+    'socios.apps.SociosConfig',
 ]
 
 MIDDLEWARE = [

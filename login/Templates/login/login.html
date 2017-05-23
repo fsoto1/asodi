@@ -18,14 +18,17 @@
 	          </div>
 	      </div>
 	</div>
-	<h1>Login</h1>
 	<div class="container">
       <div class="row">
       		<div class="col-xs-12">
-	      		<h1>As</h1>
-	      		{% if error_mesage %}
-	      			<p>{{ error_message }}</p>
-	      		{% endif %}
+	      		{% if form.non_field_errors %}
+				    <ul class='form-errors'>
+				        {% for error in form.non_field_errors %}
+				            <li class="text-danger medium">{{ error }}</li>
+				        {% endfor %}
+				    </ul>
+				    <label class="control-label" for="inputError1">{{ error }}</label>
+				{% endif %}
 				<form class="form-horizontal" role="form" action="" method="POST" enctype="multipart/form-data">
 					{% csrf_token %}
 					{% include 'sas/form-template.html' %}

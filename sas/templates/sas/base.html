@@ -35,8 +35,8 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Socios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'sas:ingresar-socio' %}">Ingresar Socio</a></li>
-                <li><a href="#">Buscar Socio</a></li>
+                <li><a href="#">Ingresar Socio</a></li>
+                <li><a href="{% url 'sas:buscar-socios' %}">Buscar Socio</a></li>
                 <li><a href="#">Buscar apoderado</a></li>
               </ul>
             </li>
@@ -58,6 +58,7 @@
             <li><a href="#">Mantenedor</a></li>            
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">{{ user.first_name }} {{ user.last_name }}</a></li>
             <li class="left"><a href="{% url 'sas:logout' %}"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
           </ul>
         </div>
