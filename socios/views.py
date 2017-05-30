@@ -33,19 +33,20 @@ def buscar(request):
 			Q(apel_mat_socios__icontains=query)
 			).distinct()
 	
-	paginator = Paginator(all_socios,10)
-	page = request.GET.get("page")
-	print("try")
-	try:
-		all_socios = paginator.page(page)
-		print("queryset")
-	except PageNotAnInteger:
-		all_socios = paginator.page(1)
-		print("PageNotAnInteger")
-	except EmptyPage:
-		all_socios = paginator.page(paginator.num_pages)
-		print("EmptyPage")
-	return render(request,'socios/buscar_socios.html', {'all_socios': all_socios} )
+		paginator = Paginator(all_socios,25)
+		page = request.GET.get("page")
+		print("try")
+		try:
+			all_socios = paginator.page(page)
+			print("queryset")
+		except PageNotAnInteger:
+			all_socios = paginator.page(1)
+			print("PageNotAnInteger")
+		except EmptyPage:
+			all_socios = paginator.page(paginator.num_pages)
+			print("EmptyPage")
+		return render(request,'socios/buscar_socios.html', {'all_socios': all_socios} )
+	return render(request,'socios/buscar_socios.html')
 
 def socio(request):
 	if not request.user.is_authenticated:

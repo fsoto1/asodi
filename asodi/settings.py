@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'sas.apps.SasConfig',
     'login.apps.LoginConfig',
     'socios.apps.SociosConfig',
+    'citaciones.apps.CitacionesConfig',
 ]
 
 MIDDLEWARE = [

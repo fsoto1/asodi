@@ -6,12 +6,12 @@
 			<h1>Buscar socio</h1>
 			<br>
       		<form action="" method="GET" class="form-inline">
-      			<input type="text" name="q" placeholder="Buscar" value="{{ request.GET.q }}" class="form-control" id="form_buscar" >
+      			<input type="text" name="q" placeholder="" value="{{ request.GET.q }}" class="form-control" id="form_buscar" >
       			<input type="submit" value="Buscar" class="btn btn-success">
       		</form>
 			<br>
       		<div class="col-xs-12">
-	      		
+	      		{% if request.GET.q %}
 	      		<table class="table table-striped">
 					<tr>
 							<th>ID</th>
@@ -47,6 +47,7 @@
       				{% endif %}
       			</span>
       		</div>
+      		{% endif %}
       		<br>
       	</div>
       </div>	
