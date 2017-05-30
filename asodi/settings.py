@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',
     'socios.apps.SociosConfig',
     'citaciones.apps.CitacionesConfig',
+    'reportes.apps.ReportesConfig',
 ]
 
 MIDDLEWARE = [
