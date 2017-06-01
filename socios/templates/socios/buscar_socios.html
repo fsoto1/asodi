@@ -6,50 +6,61 @@
 			<h1>Buscar socio</h1>
 			<br>
       		<form action="" method="GET" class="form-inline">
-      			<input type="text" name="q" placeholder="" value="{{ request.GET.q }}" class="form-control" id="form_buscar" >
+      			<input type="text" name="q" placeholder="Rut, Nombre o Apellidos" value="{{ request.GET.q }}" class="form-control" id="form_buscar" >
       			<input type="submit" value="Buscar" class="btn btn-success">
       		</form>
 			<br>
       		<div class="col-xs-12">
 	      		{% if request.GET.q %}
-	      		<table class="table table-striped">
-					<tr>
-							<th>ID</th>
-							<th>Rut</th>
-							<th>Nombre</th>
-							<th>Apellido Paterno</th>
-							<th>Apellido Materno</th>
-							<th>Ver</th>
-						</tr>
-					{% for socio in all_socios %}
+	      		<table class="table table-striped table-bordered table-hover" id="tabla">
+	      			<thead>
 						<tr>
-							<td>{{socio.id_socios}}</td>
-							<td>{{socio.rut_socios}}</td>
-							<td>{{socio.nom_socios}}</td>
-							<td>{{socio.apel_pat_socios}}</td>
-							<td>{{socio.apel_mat_socios}}</td>
-							<td><a href="{% url 'sas:socio' %}?id={{socio.id_socios}}"><span class="glyphicon glyphicon-search"></span></a></td>
-						</tr>
-					{% endfor %}
+								<th>ID</th>
+								<th>Rut</th>
+								<th>Nombre</th>
+								<th>Apellido Paterno</th>
+								<th>Apellido Materno</th>
+								<th>Ver</th>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr>
+								<th>ID</th>
+								<th>Rut</th>
+								<th>Nombre</th>
+								<th>Apellido Paterno</th>
+								<th>Apellido Materno</th>
+								<th>Ver</th>
+							</tr>
+					</tfoot>
+					<tbody>
+						{% for socio in all_socios %}
+							<tr>
+								<td>{{socio.id_socios}}</td>
+								<td>{{socio.rut_socios}}</td>
+								<td>{{socio.nom_socios}}</td>
+								<td>{{socio.apel_pat_socios}}</td>
+								<td>{{socio.apel_mat_socios}}</td>
+								<td><a href="{% url 'sas:socio' %}?id={{socio.id_socios}}"><span class="glyphicon glyphicon-search"></span></a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
 				</table>
 	      	
       		</div>
-      		<div class="pagination">
-      			<span class="step-links">
-      				{% if all_socios.has_previous %}
-      				<a href="?page={{ all_socios.previous_page_number }}&q={{ request.GET.q }}">Anterior</a>
-      				{% endif %}
-      				<span class="current">
-      					Página {{ all_socios.number }} de {{ all_socios.paginator.num_pages}}
-      				</span>
-      				{% if all_socios.has_next %}
-      				<a href="?page={{ all_socios.next_page_number }}&q={{ request.GET.q }}">Siguiente</a>
-      				{% endif %}
-      			</span>
-      		</div>
+      	
       		{% endif %}
       		<br>
       	</div>
-      </div>	
+      </div>
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+
+      <script type="text/javascript">
+      	$(document).ready(function(){
+      		$("#tabla").dataTable();
+      	});
+      </script>	
 	
 {% endblock %}
