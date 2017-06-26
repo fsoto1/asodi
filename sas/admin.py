@@ -28,9 +28,9 @@ class CtroSaludAdmin(admin.ModelAdmin):
 admin.site.register(CtroSalud, CtroSaludAdmin)
 
 class CuotaAdmin(admin.ModelAdmin):
-    list_display = ["id_cuota","fecha_emision"]
+    list_display = ["fecha_emision"]
     list_filter = ["fecha_emision"]
-    search_fields = ["id_cuota","fecha_emision"]
+    search_fields = ["fecha_emision"]
     class Meta:
     	Cuota
 
@@ -54,8 +54,8 @@ class EstadoAdmin(admin.ModelAdmin):
 admin.site.register(Estado, EstadoAdmin)
 
 class PagoAdmin(admin.ModelAdmin):
-    list_display = ["id_pago","id_socio","id_cuota","monto","fecha_pago"]
-    search_fields = ["id_pago","id_socio","id_cuota","fecha_pago"]
+    list_display = ["id_socio","id_cuota","monto","fecha_pago"]
+    search_fields = ["id_socio","id_cuota","fecha_pago"]
     list_filter = ["fecha_pago"]
     raw_id_fields= ["id_socio","id_cuota"]
     class Meta:
