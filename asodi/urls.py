@@ -18,5 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('sas.urls')),
+    url(r'^', include('sas.urls', namespace="sas")),
+    url(r'^socios/', include('socios.urls', namespace="socios")),
+    url(r'^login/', include('login.urls', namespace="login")),
+    url(r'^citaciones/', include('citaciones.urls', namespace="citaciones")),
+    url(r'^cuotas/', include('cuotas.urls', namespace="cuotas")),
+    url(r'^reportes/', include('reportes.urls', namespace="reportes")),
 ]

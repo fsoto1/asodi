@@ -27,7 +27,5 @@ class SocioForm(forms.ModelForm):
 			"id_ctro_salud",
 			"id_prev",
 			"id_patologia",
-			#"id_apoderado",
 			"id_tipo_paciente",
-			"fech_defun",
 		]
