@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from .models import Socios
+from sas.models import Socio
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-
+from .forms import SocioForm
 # Create your views here.
 
 
@@ -21,16 +21,16 @@ def buscar(request):
 	#Q(rut_socios__startswith='2') |
 	#		Q(nom_socios__startswith='A')
 	print("get")
-	all_socios = Socios.objects.all()
+	all_socios = Socio.objects.all()
 	
 	query = request.GET.get("q")
 	if query:
 		print("query")
 		all_socios = all_socios.filter(
-			Q(rut_socios__icontains=query) |
-			Q(nom_socios__icontains=query) |
-			Q(apel_pat_socios__icontains=query) |
-			Q(apel_mat_socios__icontains=query)
+			Q(rut_socio__icontains=query) |
+			Q(nom_socio__icontains=query) |
+			Q(apel_pat_socio__icontains=query) |
+			Q(apel_mat_socio__icontains=query)
 			).distinct()
 	
 		
@@ -43,5 +43,17 @@ def socio(request):
 	query = request.GET.get("id")
 	if query:
 		print("query")
-		socio = Socios.objects.get(id_socios = query)
+		socio = Socio.objects.get(id_socio = query)
 	return render(request, 'socios/socio.html', {'socio': socio})
+
+
+def agregar_socio(request):
+	form = SocioForm(request.POST or None)
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+
+	context = {
+		"form":form,
+	}
+	return render(request, "socios/agregar_socio.html", context)

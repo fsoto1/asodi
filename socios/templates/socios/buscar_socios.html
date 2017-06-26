@@ -36,20 +36,18 @@
 					<tbody>
 						{% for socio in all_socios %}
 							<tr>
-								<td>{{socio.id_socios}}</td>
-								<td>{{socio.rut_socios}}</td>
-								<td>{{socio.nom_socios}}</td>
-								<td>{{socio.apel_pat_socios}}</td>
-								<td>{{socio.apel_mat_socios}}</td>
-								<td><a href="{% url 'sas:socio' %}?id={{socio.id_socios}}"><span class="glyphicon glyphicon-search"></span></a></td>
+								<td>{{socio.id_socio}}</td>
+								<td>{{socio.rut_socio}}</td>
+								<td>{{socio.nom_socio}}</td>
+								<td>{{socio.apel_pat_socio}}</td>
+								<td>{{socio.apel_mat_socio}}</td>
+								<td><a href="{% url 'sas:socio' %}?id={{socio.id_socio}}"><span class="glyphicon glyphicon-search"></span></a></td>
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
-	      	
+	      		{% endif %}
       		</div>
-      	
-      		{% endif %}
       		<br>
       	</div>
       </div>

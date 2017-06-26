@@ -12,7 +12,6 @@ from django.db import models
 
 class Apoderado(models.Model):
     id_apoderado = models.AutoField(primary_key=True)
-    cod_apoderado = models.CharField(max_length=15, blank=True, null=True)
     rut_apoderado = models.CharField(max_length=10, blank=True, null=True)
     nom_apoderado = models.CharField(max_length=45, blank=True, null=True)
     apel_pat_apoderado = models.CharField(max_length=45, blank=True, null=True)
@@ -20,10 +19,10 @@ class Apoderado(models.Model):
     email_apoderado = models.CharField(max_length=45, blank=True, null=True)
     telef_apoderado = models.CharField(max_length=45, blank=True, null=True)
     fech_nac_apoderado = models.DateField(blank=True, null=True)
-    foto_apoderado = models.CharField(max_length=45, blank=True, null=True)
     comuna_numero = models.ForeignKey('Comuna', models.DO_NOTHING, db_column='comuna_numero', blank=True, null=True)
     dir_apoderado = models.CharField(max_length=45, blank=True, null=True)
     fech_ing_apod = models.DateField(blank=True, null=True)
+    id_socio = models.ForeignKey('Socio', models.DO_NOTHING, db_column='id_socio', blank=True, null=True)
 
     def __str__(self):
         return self.rut_apoderado
@@ -204,7 +203,6 @@ class Socio(models.Model):
     id_ctro_salud = models.ForeignKey(CtroSalud, models.DO_NOTHING, db_column='id_ctro_salud', blank=True, null=True)
     id_prev = models.ForeignKey(Prevision, models.DO_NOTHING, db_column='id_prev', blank=True, null=True)
     id_patologia = models.ForeignKey(Patologia, models.DO_NOTHING, db_column='id_patologia', blank=True, null=True)
-    id_apoderado = models.ForeignKey(Apoderado, models.DO_NOTHING, db_column='id_apoderado', blank=True, null=True)
     id_tipo_paciente = models.ForeignKey('TipoPaciente', models.DO_NOTHING, db_column='id_tipo_paciente', blank=True, null=True)
     fech_defun = models.DateField(blank=True, null=True)
 

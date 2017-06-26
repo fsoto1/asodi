@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'sas.apps.SasConfig',
     'login.apps.LoginConfig',
     'socios.apps.SociosConfig',
@@ -87,6 +88,9 @@ DATABASES = {
         'PASSWORD' : '',
         'HOST' : 'localhost',
         'PORT' : '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
     }
 }
 

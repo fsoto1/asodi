@@ -2,9 +2,10 @@ from django.contrib import admin
 from .models import Apoderado, Comuna, CtroSalud, Cuota, EstCivil, Estado, Pago, Patologia, Prevision, Provincia, Region, Salud, Socio, TipoPaciente
 
 class ApoderadoAdmin(admin.ModelAdmin):
-    list_display = ["nom_apoderado","apel_pat_apoderado","rut_apoderado"]
+    list_display = ["nom_apoderado","apel_pat_apoderado","rut_apoderado", "id_socio"]
     list_filter = ["fech_ing_apod"]
     search_fields = ["nom_apoderado","apel_pat_apoderado","rut_apoderado"]
+    raw_id_fields= ["id_socio", "comuna_numero"]
     class Meta:
     	Apoderado
 
@@ -106,7 +107,7 @@ class SocioAdmin(admin.ModelAdmin):
     list_display = ["rut_socio","nom_socio","apel_pat_socio","apel_mat_socio","id_estado", "id_tipo_paciente"]
     list_filter = ["fech_nac_socio","fech_ing_socio","fech_defun"]
     search_fields = ["rut_socio","nom_socio","apel_pat_socio","apel_mat_socio"]
-    raw_id_fields= ["id_apoderado", "id_ctro_salud","id_comuna","id_estado", "id_est_civil","id_salud","id_prev","id_patologia", "id_tipo_paciente"]
+    raw_id_fields= ["id_ctro_salud","id_comuna","id_estado", "id_est_civil","id_salud","id_prev","id_patologia", "id_tipo_paciente"]
     class Meta:
     	Socio
 
