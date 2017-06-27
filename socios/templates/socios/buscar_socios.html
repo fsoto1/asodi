@@ -3,7 +3,9 @@
 {% block content %}
 	 <div class="container">
       <div class="row">
+
 			<h1>Buscar socio</h1>
+			
 			<br>
       		<form action="" method="GET" class="form-inline">
       			<input type="text" name="q" placeholder="Rut, Nombre o Apellidos" value="{{ request.GET.q }}" class="form-control" id="form_buscar" >
@@ -21,6 +23,8 @@
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
 								<th>Ver</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
 							</tr>
 					</thead>
 					<tfoot>
@@ -31,17 +35,21 @@
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
 								<th>Ver</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
 							</tr>
 					</tfoot>
 					<tbody>
 						{% for socio in all_socios %}
 							<tr>
-								<td>{{socio.id_socio}}</td>
+								<td>{{socio.id}}</td>
 								<td>{{socio.rut_socio}}</td>
 								<td>{{socio.nom_socio}}</td>
 								<td>{{socio.apel_pat_socio}}</td>
 								<td>{{socio.apel_mat_socio}}</td>
-								<td><a href="{% url 'sas:socio' %}?id={{socio.id_socio}}"><span class="glyphicon glyphicon-search"></span></a></td>
+								<td><a href="{% url 'socios:socio' id=socio.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+								<td><a href="{% url 'socios:editar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="{% url 'socios:eliminar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
 							</tr>
 						{% endfor %}
 					</tbody>
@@ -52,13 +60,8 @@
       	</div>
       </div>
       
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
-      <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+  
 
-      <script type="text/javascript">
-      	$(document).ready(function(){
-      		$("#tabla").dataTable();
-      	});
-      </script>	
+
 	
 {% endblock %}

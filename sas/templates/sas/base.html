@@ -46,7 +46,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Citaciones<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'sas:citacion' %}">Citación</a></li>
+                <li><a href="">Citación</a></li>
                 <li><a href="#">Carta</a></li>
               </ul>
             </li>
@@ -61,13 +61,14 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{{ user.first_name }} {{ user.last_name }}</a></li>
-            <li class="left"><a href="{% url 'sas:logout' %}"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
+            <li class="left"><a href="{% url 'login:logout' %}"><span class="glyphicon glyphicon-off"></span> Salir</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
 	<div>
+    
 		{% block content %}
 
 		{% endblock %}

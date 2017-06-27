@@ -1,0 +1,62 @@
+{% extends "sas/base.html" %}
+{% block title %} Agregar Socios {% endblock %}
+{% block content %}
+{% load bootstrap %}
+	 <div class="container">
+      <div class="row">
+			<h1>Socio</h1>
+
+			{% if messages %}
+				<ul class="messages list-group">
+				    {% for message in messages %}
+				    	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				    {% endfor %}
+				</ul>
+			{% endif %}
+
+			<form action="" method="POST" class="form-horizontal">
+				{% csrf_token %}
+				{{ form|bootstrap_horizontal:'col-lg-2' }}
+				<input type="submit" value="Agregar" class="btn btn-success">
+			</form>
+			
+
+      	</div>
+      </div>	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script>
+		var Fn = {
+			// Valida el rut con su cadena completa "XXXXXXXX-X"
+			validaRut : function (rutCompleto) {
+				if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+					return false;
+				var tmp 	= rutCompleto.split('-');
+				var digv	= tmp[1]; 
+				var rut 	= tmp[0];
+				if ( digv == 'K' ) digv = 'k' ;
+				return (Fn.dv(rut) == digv );
+			},
+			dv : function(T){
+				var M=0,S=1;
+				for(;T;T=Math.floor(T/10))
+					S=(S+T%10*(9-M++%6))%11;
+				return S?S-1:'k';
+			}
+		}
+		$(document).ready(function() {
+		    $('.datepicker').datepicker();
+		    var a = $("#id_rut_socio")[0].value;
+		    console.log (a);
+		    
+		    $("#id_rut_socio").change(function(){
+		    	
+		    	if(!Fn.validaRut($("#id_rut_socio")[0].value)){
+		    		alert("El Rut ingresado no es valido");
+		    		$("#id_rut_socio")[0].value = a;
+		    	}
+			});
+		});
+	</script>
+{% endblock %}
