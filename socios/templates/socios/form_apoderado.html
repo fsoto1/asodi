@@ -1,10 +1,10 @@
 {% extends "sas/base.html" %}
-{% block title %} Agregar Socios {% endblock %}
+{% block title %} Agregar Apoderado {% endblock %}
 {% block content %}
 {% load bootstrap %}
 	 <div class="container">
       <div class="row">
-			<h1>Socio</h1>
+			<h1>Apoderado</h1>
 
 			{% if messages %}
 				<ul class="messages list-group">
@@ -17,7 +17,7 @@
 			<form action="" method="POST" class="form-horizontal">
 				{% csrf_token %}
 				{{ form|bootstrap_horizontal:'col-lg-2' }}
-				<input type="submit" value="Agregar" class="btn btn-success">
+				<input type="submit" value="Agregar" class="btn btn-success btn-block">
 			</form>
 			
 
@@ -47,13 +47,13 @@
 		}
 		$(document).ready(function() {
 		    $('.datepicker').datepicker();
-		    var a = $("#id_rut_socio")[0].value;
+		    var a = $("#id_rut_apoderado")[0].value;
 		    
-		    $("#id_rut_socio").change(function(){
+		    $("#id_rut_apoderado").change(function(){
 		    	
-		    	if(!Fn.validaRut($("#id_rut_socio")[0].value)){
+		    	if(!Fn.validaRut($("#id_rut_apoderado")[0].value)){
 		    		alert("El Rut ingresado no es valido");
-		    		$("#id_rut_socio")[0].value = a;
+		    		$("#id_rut_apoderado")[0].value = a;
 		    	}
 			});
 		});

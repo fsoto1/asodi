@@ -1,19 +1,11 @@
 from django import forms
-from sas.models import Socio
+from sas.models import Socio, Apoderado
 from functools import partial
 from itertools import cycle
 
-def digito_verificador(rut):
-    reversed_digits = map(int, reversed(str(rut)))
-    factors = cycle(range(2, 8))
-    s = sum(d * f for d, f in zip(reversed_digits, factors))
-    return (-s) % 11
 
 DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
-class DateRangeForm(forms.Form):
-    start_date = forms.DateField(widget=DateInput())
-    end_date = forms.DateField(widget=DateInput())
 
 Sexo = (
 	('M', "Masculino"),
@@ -52,3 +44,28 @@ class SocioForm(forms.ModelForm):
 			"id_patologia",
 			"id_tipo_paciente",
 		]
+
+
+class ApoderadoForm(forms.ModelForm):
+	rut_apoderado = forms.CharField(label='Rut')
+	email_apoderado = forms.CharField(label='E-mail',widget=forms.EmailInput)
+	fech_nac_apoderado = forms.DateField(widget=DateInput())
+
+    
+
+	class Meta:
+		model = Apoderado
+		fields=[
+			"rut_apoderado",
+			"nom_apoderado",
+			"apel_pat_apoderado",
+			"apel_mat_apoderado",
+			"email_apoderado",
+			"telef_apoderado",
+			"fech_nac_apoderado",
+			"comuna_numero",
+			"dir_apoderado",
+			"id_socio",
+		]
+
+		

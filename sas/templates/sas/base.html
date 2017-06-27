@@ -37,10 +37,11 @@
             <li class="active"><a href="{% url 'sas:index' %}"><span class="glyphicon glyphicon-home"></span></a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Socios<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url 'socios:agregar-socio' %}">Ingresar Socio</a></li>
+              <ul class="dropdown-menu">                
                 <li><a href="{% url 'socios:buscar-socios' %}">Buscar Socio</a></li>
-                <li><a href="#">Buscar apoderado</a></li>
+                <li><a href="{% url 'socios:agregar-socio' %}">Ingresar Socio</a></li>
+                <li><a href="{% url 'socios:buscar-apoderado' %}">Buscar Apoderado</a></li>
+                <li><a href="{% url 'socios:agregar-apoderado' %}">Ingresar Apoderado</a></li>                
               </ul>
             </li>
             <li class="dropdown">
@@ -73,11 +74,11 @@
 
 		{% endblock %}
 	</div>
-	<div>
-		<div class="container-fluid header footer">
+	<div class="footer">
+		<div class="container-fluid ">
 	      <div class="row">
 	          <div class="col-xs-12 ">
-				<p>Sistema de administración de socios</p>
+				        <p>Sistema de administración de socios</p>
 	          </div>
 	      </div>
 	    </div>

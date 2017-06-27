@@ -1,9 +1,9 @@
 {% extends "sas/base.html" %}
-{% block title %} Buscar Socios {% endblock %}
+{% block title %} Buscar Apoderados {% endblock %}
 {% block content %}
 	 <div class="container">
       <div class="row">
-			
+
 			{% if messages %}
 				<ul class="messages list-group">
 				    {% for message in messages %}
@@ -12,7 +12,7 @@
 				</ul>
 			{% endif %}
 
-			<h1>Buscar socio</h1>
+			<h1>Buscar Apoderado</h1>
 			
 			<br>
       		<form action="" method="GET" class="form-inline">
@@ -30,6 +30,7 @@
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
+								<th>Socio</th>
 								<th>Ver</th>
 								<th>Editar</th>
 								<th>Eliminar</th>
@@ -42,22 +43,24 @@
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
+								<th>Socio</th>
 								<th>Ver</th>
 								<th>Editar</th>
 								<th>Eliminar</th>
 							</tr>
 					</tfoot>
 					<tbody>
-						{% for socio in all_socios %}
+						{% for apoderado in all_apoderados %}
 							<tr>
-								<td>{{socio.id}}</td>
-								<td>{{socio.rut_socio}}</td>
-								<td>{{socio.nom_socio}}</td>
-								<td>{{socio.apel_pat_socio}}</td>
-								<td>{{socio.apel_mat_socio}}</td>
-								<td><a href="{% url 'socios:socio' id=socio.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-								<td><a href="{% url 'socios:editar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a href="{% url 'socios:eliminar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
+								<td>{{apoderado.id}}</td>
+								<td>{{apoderado.rut_apoderado}}</td>
+								<td>{{apoderado.nom_apoderado}}</td>
+								<td>{{apoderado.apel_pat_apoderado}}</td>
+								<td>{{apoderado.apel_mat_apoderado}}</td>
+								<td>{{apoderado.id_socio}}</td>
+								<td><a href="{% url 'socios:apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+								<td><a href="{% url 'socios:editar-apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="{% url 'socios:eliminar-apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
 							</tr>
 						{% endfor %}
 					</tbody>
