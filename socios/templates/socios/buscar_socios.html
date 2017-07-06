@@ -50,19 +50,38 @@
 					<tbody>
 						{% for socio in all_socios %}
 							<tr>
-								<td>{{socio.id}}</td>
+								<td>{{socio.id_socio}}</td>
 								<td>{{socio.rut_socio}}</td>
 								<td>{{socio.nom_socio}}</td>
 								<td>{{socio.apel_pat_socio}}</td>
 								<td>{{socio.apel_mat_socio}}</td>
-								<td><a href="{% url 'socios:socio' id=socio.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-								<td><a href="{% url 'socios:editar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a href="{% url 'socios:eliminar-socio' id=socio.id  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
+								<td><a href="{% url 'socios:socio' id=socio.id_socio  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+								<td><a href="{% url 'socios:editar-socio' id=socio.id_socio  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="{% url 'socios:eliminar-socio' id=socio.id_socio  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
+
+				<div class="pagination">
+	      			<span class="step-links">
+	      				{% if all_socios.has_previous %}
+	      				<a href="?page={{ all_socios.previous_page_number }}&q={{ request.GET.q }}" class="btn btn-success" role="button">Anterior</a>
+	      				{% endif %}
+	      				<span class="current ">
+	      					Página {{ all_socios.number }} de {{ all_socios.paginator.num_pages}}
+	      				</span>
+	      				{% if all_socios.has_next %}
+	      				<a href="?page={{ all_socios.next_page_number }}&q={{ request.GET.q }} "class="btn btn-success" role="button">Siguiente</a>
+	      				{% endif %}
+	      			</span>
+	      		</div>
+				<br>
+				<a href="{% url 'socios:export_socios' %}?q={{ request.GET.q }}" class="btn btn-success btn-md" role="button"><span class="glyphicon glyphicon-download-alt"></span> Exportar a Excel</a>
+
 	      		{% endif %}
+	      		<br>
+	      		<br>
       		</div>
       		<br>
       	</div>

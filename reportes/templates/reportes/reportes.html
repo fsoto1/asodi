@@ -1,0 +1,30 @@
+{% extends "sas/base.html" %}
+{% block title %} Reportes {% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<h1>Reportes </h1>
+		<br>
+		<br>
+		<div class="col-xs-8">
+			
+
+			<a href="{% url 'reportes:comunas' %}" class="btn btn-success btn-lg btn-block" rol="button">Comunas</a>	
+		
+			<a href="#" class="btn btn-success btn-lg btn-block" rol="button">Centros de Salud</a>	
+
+			<a href="#" class="btn btn-success btn-lg btn-block" rol="button">Estados de socios</a>	
+
+		</div>
+					
+	</div>
+	<br>
+	<br>
+</div>
+      
+  
+
+
+	
+{% endblock %}

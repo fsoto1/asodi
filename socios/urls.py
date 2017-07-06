@@ -16,4 +16,7 @@ urlpatterns = [
 	url(r'^apoderados/ingresar$', views.apoderado_add, name='agregar-apoderado'),
 	url(r'^apoderados/(?P<id>[0-9]+)/editar/$', views.apoderado_edit, name='editar-apoderado'),
 	url(r'^apoderados/(?P<id>[0-9]+)/eliminar/$', views.apoderado_delete, name='eliminar-apoderado'),
+
+	url(r'^export/socios/xls/$', views.export_socios, name='export_socios'),
+	url(r'^export/apoderados/xls/$', views.export_apoderados, name='export_apoderados'),
 ]

@@ -52,20 +52,39 @@
 					<tbody>
 						{% for apoderado in all_apoderados %}
 							<tr>
-								<td>{{apoderado.id}}</td>
+								<td>{{apoderado.id_apoderado}}</td>
 								<td>{{apoderado.rut_apoderado}}</td>
 								<td>{{apoderado.nom_apoderado}}</td>
 								<td>{{apoderado.apel_pat_apoderado}}</td>
 								<td>{{apoderado.apel_mat_apoderado}}</td>
 								<td>{{apoderado.id_socio}}</td>
-								<td><a href="{% url 'socios:apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-								<td><a href="{% url 'socios:editar-apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td><a href="{% url 'socios:eliminar-apoderado' id=apoderado.id  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
+								<td><a href="{% url 'socios:apoderado' id=apoderado.id_apoderado  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+								<td><a href="{% url 'socios:editar-apoderado' id=apoderado.id_apoderado  %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="{% url 'socios:eliminar-apoderado' id=apoderado.id_apoderado  %}"><span class="glyphicon glyphicon-trash "></span></a></td>						
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
+
+				<div class="pagination">
+	      			<span class="step-links">
+	      				{% if all_apoderados.has_previous %}
+	      				<a href="?page={{ all_socios.previous_page_number }}&q={{ request.GET.q }}" class="btn btn-success" role="button">Anterior</a>
+	      				{% endif %}
+	      				<span class="current">
+	      					Página {{ all_apoderados.number }} de {{ all_apoderados.paginator.num_pages}}
+	      				</span>
+	      				{% if all_apoderados.has_next %}
+	      				<a href="?page={{ all_apoderados.next_page_number }}&q={{ request.GET.q }}" class="btn btn-success" role="button">Siguiente</a>
+	      				{% endif %}
+	      			</span>
+	      		</div>
+	      		<br>
+				<a href="{% url 'socios:export_apoderados' %}?q={{ request.GET.q }}" class="btn btn-success btn-md" role="button"><span class="glyphicon glyphicon-download-alt"></span> Exportar a Excel</a>
+
 	      		{% endif %}
+	      		<br>
+	      		<br>
       		</div>
       		<br>
       	</div>
